@@ -7,7 +7,7 @@
 <div th:replace="fragments/header :: header"></div>
 
 
-<form action="#" th:action="@{'/guest/requests/' + ${request.id}}" th:object="${request}" th:method="PATCH" style="margin-top: 80px">
+<form action="#" th:action="@{'/guest/requests/' + ${request.id}}" th:object="${request}" th:method="PUT" style="margin-top: 80px">
   <p>Описание:
     <input type="text" th:field="*{description}" name="description" id="description" class="form-control input-lg"
            placeholder="Description" required="true" autofocus="true"/>

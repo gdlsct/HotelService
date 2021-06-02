@@ -6,9 +6,8 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 
-
-<form action="#" th:action="@{'/requests/' + ${request.id}}" th:object="${request}" th:method="PATCH" style="margin-top: 80px">
-  <p>Описание: <input type="text" th:field="*{description}" /></p>
+<form action="#" th:action="@{'/dispatcher/requests/' + ${request.id}}" th:object="${request}" th:method="PATCH" style="margin-top: 80px">
+  <p>Сотрудник: <input type="text" th:field="*{worker}" /></p>
   <p><input type="submit" value="Принять" /> <input type="reset" value="Сбросить" /></p>
 </form>
 

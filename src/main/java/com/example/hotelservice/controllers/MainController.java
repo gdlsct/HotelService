@@ -54,7 +54,7 @@ public class MainController {
     }
 
     @GetMapping(value = {"/"})
-    public String index(Principal principal) {
+    public String index() {
 
         return "login";
     }

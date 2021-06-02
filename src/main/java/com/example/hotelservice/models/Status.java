@@ -5,7 +5,8 @@ public enum Status {
     CANCELLED_BY_GUEST("Отменено гостем"),
     CANCELLED_BY_WORKER("Отменено сотрудником"),
     CANCELLED_BY_DISPATCHER("Отменено диспетчером"),
-    DONE("Выполнено");
+    DONE("Выполнено"),
+    ASSIGNED("Назначено");
 
     private String string;
 

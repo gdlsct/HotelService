@@ -7,13 +7,13 @@
 <div th:replace="fragments/header :: header"></div>
 
 
-<form action="#" th:action="@{'/requests/' + ${request.id}}" th:object="${request}" th:method="PATCH" style="margin-top: 80px">
+<form action="#" th:action="@{'/worker/requests/' + ${request.id}}" th:object="${request}" th:method="PATCH" style="margin-top: 80px">
   <p>Описание: <input type="text" th:field="*{description}" /></p>
   <p><input type="submit" value="Принять" /> <input type="reset" value="Сбросить" /></p>
 </form>
 
-<form action="#" th:action="@{'/requests/' + ${request.id}}" th:method="DELETE" >
-  <input type="submit" value="Удалить"/>
+<form action="#" th:action="@{'/worker/requests/' + ${request.id}}" th:method="PATCH" >
+  <input type="submit" value="Завершить"/>
 </form>
 
 <div th:replace="fragments/footer :: footer"></div>

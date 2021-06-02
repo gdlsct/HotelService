@@ -44,18 +44,13 @@ public class DispatcherRequestsController {
             return "dispatcher/edit";
         }
 
+        request = requestRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid request Id:" + id));
+        request.setStatus(Status.ASSIGNED);
+        request.setWorker("Антон Антонов");
         requestRepository.save(request);
-        model.addAttribute("request", requestRepository.findAll());
+        model.addAttribute("request", request);
         return "redirect:/dispatcher/requests";
     }
 
-    @PatchMapping("/{id}/cancel")
-    public String deleteRequest(@PathVariable("id") long id, Model model) {
-        Request request = requestRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid request Id:" + id));
-        request.setStatus(Status.CANCELLED_BY_GUEST);
-        requestRepository.save(request);
-        model.addAttribute("request", requestRepository.findAll());
-        return "redirect:/dispatcher/requests";
-    }
 }

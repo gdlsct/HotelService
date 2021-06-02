@@ -29,11 +29,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         AppUser appUser = this.userRepository.findUserAccount(userName);
 
         if (appUser == null) {
-            System.out.println("User not found! " + userName);
             throw new UsernameNotFoundException("User " + userName + " was not found in the database");
         }
 
-        System.out.println("Found User: " + appUser);
 
         // [ROLE_USER, ROLE_ADMIN,..]
         List<String> roleNames = this.roleRepository.getRoleNames(appUser.getUserId());

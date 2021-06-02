@@ -62,23 +62,38 @@ public class GuestRequestsController {
         return "guest/edit";
     }
 
-    @PatchMapping("/{id}")
-    public String updateRequest(@PathVariable("id") long id, @Valid Request request, BindingResult result,
-                                Model model) {
-        if (result.hasErrors()) {
-            request.setId(id);
-            return "guest/edit";
-        }
-
+    @PutMapping(value = "/{id}")
+    public String putRequest(@PathVariable("id") long id, @ModelAttribute("request") Request request,
+                             BindingResult bindingResult,
+                             Model model, Principal principal) {
+        request.setFirstName(userRepository.findUserAccount(principal.getName()).getUserFirstName());
+        request.setLastName(userRepository.findUserAccount(principal.getName()).getUserLastName());
+        request.setRoom(userRepository.findUserAccount(principal.getName()).getUserRoom());
         requestRepository.save(request);
-        model.addAttribute("request", requestRepository.findAll());
+        model.addAttribute("request", "request_attributes");
         return "redirect:/guest/requests";
     }
+
+//    @PutMapping("/{id}")
+//    public String updateRequest(@PathVariable("id") long id, @Valid Request request, BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+//            request.setId(id);
+//            return "guest/edit";
+//        }
+//        request = requestRepository.findById(id)
+//                .orElseThrow(() -> new IllegalArgumentException("Invalid request Id:" + id));
+//
+////        requestRepository.save(request);
+//        model.addAttribute("request", request);
+//        requestRepository.save(request);
+//        return "redirect:/guest/requests";
+//    }
 
     @PatchMapping("/{id}/cancel")
     public String deleteRequest(@PathVariable("id") long id, Model model) {
         Request request = requestRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid request Id:" + id));
+
         request.setStatus(Status.CANCELLED_BY_GUEST);
         requestRepository.save(request);
         model.addAttribute("request", requestRepository.findAll());

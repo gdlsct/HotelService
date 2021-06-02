@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         // The pages does not require login
-        http.authorizeRequests().antMatchers("/", "/logout", "/info").permitAll();
+        http.authorizeRequests().antMatchers("/", "/info").permitAll();
 
         // /userInfo page requires login as ROLE_USER or ROLE_ADMIN.
         // If no login, it will redirect to /login page.
@@ -72,12 +72,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")//
                 .passwordParameter("password")
                 // Config for Logout Page
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
+                .and().logout().logoutSuccessUrl("/");
 
         // Config Remember Me.
-        http.authorizeRequests().and() //
-                .rememberMe().tokenRepository(this.persistentTokenRepository()) //
-                .tokenValiditySeconds(1 * 24 * 60 * 60); // 24h
+//        http.authorizeRequests().and() //
+//                .rememberMe().tokenRepository(this.persistentTokenRepository()) //
+//                .tokenValiditySeconds(1 * 24 * 60 * 60); // 24h
 
     }
 

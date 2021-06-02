@@ -20,7 +20,6 @@
                         <th>Комната</th>
                         <th>Описание проблемы</th>
                         <th>Статус</th>
-                        <th>Комната</th>
                         <th>Рейтинг</th>
                         <th>Назначенный сотрудник</th>
                         <th>Коментарий диспетчера</th>
@@ -35,11 +34,10 @@
                         <td th:text="${request.room}"></td>
                         <td th:text="${request.description}"></td>
                         <td th:text="${request.status.getString()}"></td>
-                        <td th:text="${request.room}"></td>
                         <td th:text="${request.rating}"></td>
                         <td th:text="${request.worker}"></td>
                         <td th:text="${request.dispatcher_comment}"></td>
-                        <td><a th:href="@{/requests/{id}(id=${request.id})}" class="btn btn-primary"><i
+                        <td><a th:href="@{/dispatcher/requests/{id}(id=${request.id})}" class="btn btn-primary"><i
                                 class="fas fa-user-edit ml-2"></i></a></td>
 <!--                        <td><a th:href="@{/delete/{id}(id=${request.id})}" class="btn btn-primary"><i-->
 <!--                                class="fas fa-user-times ml-2"></i></a></td>-->
