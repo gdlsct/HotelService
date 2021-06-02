@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <div th:fragment="header-css">
         <!-- Font Awesome -->
@@ -56,7 +56,7 @@
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" th:href="@{/index}">
+                <a class="navbar-brand mt-2 mt-lg-0" th:href="@{/news}">
                     <img
                             src="https://sun9-67.userapi.com/c840128/v840128409/53ea2/SbAtySZzlTE.jpg"
                             height="35"
@@ -67,10 +67,18 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/index}">Новости</a>
+                        <a class="nav-link" th:href="@{/news}">Новости</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/requests/list}">Заявки</a>
+                    <li class="nav-item" sec:authorize="hasRole('ROLE_GUEST')">
+                        <a class="nav-link" th:href="@{/guest/requests}">Заявки</a>
+                    </li>
+
+                    <li class="nav-item" sec:authorize="hasRole('ROLE_WORKER')">
+                        <a class="nav-link" th:href="@{/worker/requests}">Заявки</a>
+                    </li>
+
+                    <li class="nav-item" sec:authorize="hasRole('ROLE_DISPATCHER')">
+                        <a class="nav-link" th:href="@{/dispatcher/requests}">Заявки</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -96,7 +104,7 @@
                             alt=""
                             loading="lazy"
                     />
-                    <div sec:authentication="name" sec:authorize="isAuthenticated()"></div>
+                    <div sec:authentication="name"></div>
                 </a>
                 <ul
                         class="dropdown-menu dropdown-menu-end"

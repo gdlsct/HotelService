@@ -6,11 +6,31 @@
 </head>
 <body class="text-center">
 
-<div th:replace="fragments/header :: header"/>
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #212121;">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+            <a class="navbar-brand mt-2 mt-lg-0" th:href="@{/news}">
+                <img
+                        src="https://sun9-67.userapi.com/c840128/v840128409/53ea2/SbAtySZzlTE.jpg"
+                        height="35"
+                        alt=""
+                        loading="lazy"
+                />
+            </a>
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+
 <div class="container">
     <div class="row justify-content-md-center" style="margin-top:80px">
         <div class="col col-lg-4">
-            <form th:action="@{/login}" method="post">
+            <form th:action="@{/}" method="post">
                 <fieldset>
                     <h1 class="h3 mb-3 font-weight-normal">Авторизация</h1>
 
@@ -34,7 +54,7 @@
                     </div>
 
                     <div class="row" style="margin-top:10px">
-                        <div class="col col-lg-2">
+                        <div class="col col-lg-3">
                             <input type="submit" class="btn btn-md btn-primary btn-block" value="Войти"/>
                         </div>
                     </div>
@@ -43,6 +63,7 @@
         </div>
     </div>
 </div>
+
 <div th:replace="fragments/footer :: footer"/>
 
 </body>

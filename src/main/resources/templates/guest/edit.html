@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <div th:replace="fragments/header :: header-css"></div>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+
+<form action="#" th:action="@{'/guest/requests/' + ${request.id}}" th:object="${request}" th:method="PATCH" style="margin-top: 80px">
+  <p>Описание:
+    <input type="text" th:field="*{description}" name="description" id="description" class="form-control input-lg"
+           placeholder="Description" required="true" autofocus="true"/>
+  </p>
+  <p><input type="submit" value="Принять" /> <input type="reset" value="Сбросить" /></p>
+</form>
+
+<form action="#" th:action="@{'/guest/requests/' + ${request.id} + '/cancel'}" th:method="PATCH" th:object="${request}">
+  <input type="submit" value="Отменить заявку"/>
+</form>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

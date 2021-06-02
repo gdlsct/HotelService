@@ -18,7 +18,23 @@ public class Request {
     private String description;
 
     @Column(name = "status")
-    private Status status = Status.Выполнено;
+    private Status status = Status.CREATED;
 
+    @Column(name = "dispatcher_comment")
+    private String dispatcher_comment = "";
 
+    @Column(name = "rating")
+    private String rating = "Нет оценки";
+
+    @Column(name = "room")
+    private int room;
+
+    @Column(name = "firstName")
+    private String firstName;
+
+    @Column(name = "lastName")
+    private String lastName;
+
+    @Column(name = "worker")
+    private String worker = "Не назначен";
 }

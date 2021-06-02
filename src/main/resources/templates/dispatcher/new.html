@@ -6,9 +6,9 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 
-<form action="#" th:action="@{/requests/new}" th:object="${request}" method="post" style="margin-top: 80px">
+<form action="#" th:action="@{/guest/requests}" th:object="${request}" method="post" style="margin-top: 80px">
     <p>Описание: <input type="text" th:field="*{description}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    <p><input type="submit" value="Принять" /> <input type="reset" value="Сбросить" /></p>
 </form>
 
 </body>

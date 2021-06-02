@@ -1,7 +1,19 @@
 package com.example.hotelservice.models;
 
 public enum Status {
-    Создано,
-    Назначено,
-    Выполнено
+    CREATED("Создано"),
+    CANCELLED_BY_GUEST("Отменено гостем"),
+    CANCELLED_BY_WORKER("Отменено сотрудником"),
+    CANCELLED_BY_DISPATCHER("Отменено диспетчером"),
+    DONE("Выполнено");
+
+    private String string;
+
+    Status(String string) {
+        this.string = string;
+    }
+
+    public String getString() {
+        return string;
+    }
 }
