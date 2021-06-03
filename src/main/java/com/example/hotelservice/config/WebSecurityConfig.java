@@ -1,6 +1,6 @@
 package com.example.hotelservice.config;
 
-import com.example.hotelservice.service.impl.UserDetailsServiceImpl;
+import com.example.hotelservice.services.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         // The pages does not require login
-        http.authorizeRequests().antMatchers("/", "/info").permitAll();
+        http.authorizeRequests().antMatchers("/", "/profile").permitAll();
 
         // /userInfo page requires login as ROLE_USER or ROLE_ADMIN.
         // If no login, it will redirect to /login page.

@@ -5,14 +5,16 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
+<div class="container marginTop">
+    <form th:action="@{/guest/requests}" th:object="${request}" method="post">
 
-<form action="#" th:action="@{/guest/requests}" th:object="${request}" method="post" style="margin-top: 80px">
-    <p>Описание:
-        <input type="text" th:field="*{description}" name="description" id="description" class="form-control input-lg"
-               placeholder="Description" required="true" autofocus="true"/>
-    </p>
-    <p><input type="submit" value="Принять" /> <input type="reset" value="Сбросить" /></p>
-</form>
-
+        <p>Описание:
+            <input type="text" th:field="*{description}" name="description" id="description"
+                   class="form-control input-lg"
+                   placeholder="Description" required="true" autofocus="true"/>
+        </p>
+        <p><input type="submit" value="Принять"/> <input type="reset" value="Сбросить"/></p>
+    </form>
+</div>
 </body>
 </html>

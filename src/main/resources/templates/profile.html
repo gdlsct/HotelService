@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div class="container marginTop">
+    <h2>Профиль</h2>
+    <h3>Логин : <span th:utext="${#request.userPrincipal.name}"></span></h3>
+
+    <div th:if="${userInfo != null}" th:utext="'Имя: ' + ${firstName}"></div>
+</div>
+</body>
+
+</html>

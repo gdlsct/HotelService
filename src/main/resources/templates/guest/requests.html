@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
-<div th:switch="${requests.size()}" class="container" style="margin-top: 80px">
+
+<div th:switch="${requests.size()}" class="container marginTop">
     <a th:href="@{/guest/requests/new}" class="btn btn-dark btn-lg" tabindex="-1" role="button" aria-disabled="true">
         Новая заявка
     </a>
@@ -34,13 +35,10 @@
                         <td><a th:if="${request.status.getString() == 'Создано'}"
                                th:href="@{/guest/requests/{id}(id=${request.id})}" class="btn btn-primary"><i
                                 class="fas fa-user-edit ml-2"></i></a></td>
-                        <!--                        <td><a th:href="@{/delete/{id}(id=${request.id})}" class="btn btn-primary"><i-->
-                        <!--                                class="fas fa-user-times ml-2"></i></a></td>-->
                     </tr>
                     </tbody>
                 </table>
             </div>
-            <!--            <p class="my-5"><a href="/signup" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>-->
         </div>
     </div>
 </div>

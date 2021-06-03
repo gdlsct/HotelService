@@ -6,19 +6,20 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 
+<div class="container marginTop">
+  <h2 th:text="'Заявка #' + *{id}"></h2>
 
-<form action="#" th:action="@{'/guest/requests/' + ${request.id}}" th:object="${request}" th:method="PUT" style="margin-top: 80px">
-  <p>Описание:
-    <input type="text" th:field="*{description}" name="description" id="description" class="form-control input-lg"
-           placeholder="Description" required="true" autofocus="true"/>
-  </p>
-  <p><input type="submit" value="Принять" /> <input type="reset" value="Сбросить" /></p>
-</form>
+  <form action="#" th:action="@{'/guest/requests/' + *{id}}" th:object="${request}" method="POST">
 
-<form action="#" th:action="@{'/guest/requests/' + ${request.id} + '/cancel'}" th:method="PATCH" th:object="${request}">
-  <input type="submit" value="Отменить заявку"/>
-</form>
+    <p>Описание проблемы: <input type="text" th:field="*{description}" class="form-control mb-4 col-4"></p>
 
-<div th:replace="fragments/footer :: footer"></div>
+    <button type="submit" class="btn btn-dark col-2"> Принять</button>
+  </form>
+
+  <hr>
+
+  <a th:href="@{/guest/requests/}"> Вернуться к заявкам</a>
+</div>
+
 </body>
 </html>

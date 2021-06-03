@@ -1,4 +1,4 @@
-package com.example.hotelservice.service.impl;
+package com.example.hotelservice.services.impl;
 
 import com.example.hotelservice.models.AppUser;
 import com.example.hotelservice.repositories.RoleRepository;

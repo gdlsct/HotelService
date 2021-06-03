@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/header :: header-css"/>
 </head>
@@ -15,31 +15,34 @@
                     <thead>
                     <tr>
                         <th>Номер</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Комната</th>
                         <th>Описание проблемы</th>
                         <th>Статус</th>
-                        <th sec:authorize="hasRole('WORKER')">Комната</th>
                         <th>Рейтинг</th>
-                        <th sec:authorize="hasRole('WORKER')">Коментарий диспетчера</th>
+                        <th>Назначенный сотрудник</th>
+                        <th>Коментарий диспетчера</th>
                         <th>Действие</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="request : ${requests}">
                         <td th:text="${request.id}"></td>
+                        <td th:text="${request.firstName}"></td>
+                        <td th:text="${request.lastName}"></td>
+                        <td th:text="${request.room}"></td>
                         <td th:text="${request.description}"></td>
-                        <td th:text="${request.status}"></td>
-                        <td sec:authorize="hasRole('WORKER')" th:text="${request.room}"></td>
+                        <td th:text="${request.status.getString()}"></td>
                         <td th:text="${request.rating}"></td>
-                        <td sec:authorize="hasRole('WORKER')" th:text="${request.dispatcher_comment}"></td>
-                        <td><a th:href="@{/requests/{id}(id=${request.id})}" class="btn btn-primary"><i
+                        <td th:text="${request.worker}"></td>
+                        <td th:text="${request.dispatcher_comment}"></td>
+                        <td><a th:href="@{/dispatcher/requests/{id}(id=${request.id})}" class="btn btn-primary"><i
                                 class="fas fa-user-edit ml-2"></i></a></td>
-<!--                        <td><a th:href="@{/delete/{id}(id=${request.id})}" class="btn btn-primary"><i-->
-<!--                                class="fas fa-user-times ml-2"></i></a></td>-->
                     </tr>
                     </tbody>
                 </table>
             </div>
-<!--            <p class="my-5"><a href="/signup" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>-->
         </div>
     </div>
 </div>

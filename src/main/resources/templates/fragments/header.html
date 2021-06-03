@@ -31,13 +31,16 @@
                 -webkit-line-clamp: 4;
                 -webkit-box-orient: vertical;
             }
+            .marginTop{
+                margin-top: 5%;
+            }
         </style>
     </div>
 </head>
 <body>
 <div th:fragment="header">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #212121;">
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #212121; max-height: 5%">
         <!-- Container wrapper -->
         <div class="container-fluid">
             <!-- Toggle button -->
@@ -65,8 +68,8 @@
                     />
                 </a>
                 <!-- Left links -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" sec:authorize="isAuthenticated()">
+                    <li class="nav-item" >
                         <a class="nav-link" th:href="@{/news}">Новости</a>
                     </li>
                     <li class="nav-item" sec:authorize="hasRole('ROLE_GUEST')">
@@ -86,7 +89,7 @@
             <!-- Collapsible wrapper -->
 
             <!-- Right elements -->
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center" sec:authorize="isAuthenticated()">
 
                 <!-- Avatar -->
                 <a
@@ -111,7 +114,7 @@
                         aria-labelledby="navbarDropdownMenuLink"
                 >
                     <li>
-                        <a class="dropdown-item" href="#">Профиль</a>
+                        <a class="dropdown-item" th:href="@{/profile}">Профиль</a>
                     </li>
                     <li>
                         <a class="dropdown-item" th:href="@{/logout}">Выйти</a>

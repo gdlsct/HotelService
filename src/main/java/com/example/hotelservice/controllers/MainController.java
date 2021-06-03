@@ -2,8 +2,6 @@ package com.example.hotelservice.controllers;
 
 import java.security.Principal;
 
-import com.example.hotelservice.models.AppUser;
-import com.example.hotelservice.repositories.RequestRepository;
 import com.example.hotelservice.repositories.UserRepository;
 import com.example.hotelservice.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +10,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class MainController {
@@ -36,21 +32,20 @@ public class MainController {
         return "admin";
     }
 
-    @GetMapping(value = "/info")
+    @GetMapping(value = "/profile")
     public String userInfo(Model model, Principal principal) {
-
-        // After user login successfully.
-        String userName = principal.getName();
-
-        System.out.println("User Name: " + userName);
 
         User loginedUser = (User) ((Authentication) principal).getPrincipal();
 
-
+        String firstName = userRepository.findUserAccount(principal.getName()).getUserFirstName();
+        String lastName = userRepository.findUserAccount(principal.getName()).getUserLastName();
         String userInfo = WebUtils.toString(loginedUser);
+
+        model.addAttribute("firstName", firstName);
+        model.addAttribute("lastName", lastName);
         model.addAttribute("userInfo", userInfo);
 
-        return "userInfoPage";
+        return "profile";
     }
 
     @GetMapping(value = {"/"})

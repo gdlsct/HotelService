@@ -6,14 +6,30 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 
-<form action="#" th:action="@{'/dispatcher/requests/' + ${request.id}}" th:object="${request}" th:method="PATCH" style="margin-top: 80px">
-  <p>Сотрудник: <input type="text" th:field="*{worker}" /></p>
-  <p><input type="submit" value="Принять" /> <input type="reset" value="Сбросить" /></p>
-</form>
+<<div class="container marginTop">
+  <h2 th:text="'Заявка #' + *{id}"></h2>
 
-<form action="#" th:action="@{'/requests/' + ${request.id}}" th:method="DELETE" >
-  <input type="submit" value="Удалить"/>
-</form>
+  <form action="#" th:action="@{/dispatcher/requests/}" th:object="${request}" method="POST">
+
+    <!-- Add hidden form field to handle update -->
+    <input type="hidden" th:field="*{id}" />
+    <input type="hidden" th:field="*{firstName}">
+    <input type="hidden" th:field="*{lastName}">
+    <input type="hidden" th:field="*{room}">
+    <input type="hidden" th:field="*{rating}">
+    <input type="hidden" th:field="*{status}">
+    <input type="hidden" th:field="*{description}">
+
+    <p>Сотрудник: <input type="text" th:field="*{worker}" class="form-control mb-2 col-2"></p>
+    <p>Комментарий: <input type="text" th:field="*{dispatcher_comment}" class="form-control mb-4 col-4"></p>
+
+    <button type="submit" class="btn btn-dark col-2"> Принять</button>
+  </form>
+
+  <hr>
+
+  <a th:href="@{/dispatcher/requests/}"> Вернуться к заявкам</a>
+</div>
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>

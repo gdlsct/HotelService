@@ -1,40 +1,50 @@
 package com.example.hotelservice.models;
 
 import lombok.Data;
+import lombok.Value;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
+@Table
 public class Request {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "description")
-    @NotBlank(message = "Description is mandatory")
-    private String description;
-
-    @Column(name = "status")
-    private Status status = Status.CREATED;
-
-    @Column(name = "dispatcher_comment")
-    private String dispatcher_comment = "";
-
-    @Column(name = "rating")
-    private String rating = "Нет оценки";
-
-    @Column(name = "room")
-    private int room;
+    @Column(name = "login")
+    @NotNull
+    private String login;
 
     @Column(name = "firstName")
+    @NotNull
     private String firstName;
 
     @Column(name = "lastName")
+    @NotNull
     private String lastName;
 
+    @Column(name = "room")
+    @NotNull
+    private int room;
+
+    @Column(name = "description")
+    @NotNull
+    private String description;
+
+    @Column(name = "status")
+    @NotNull
+    private Status status;
+
     @Column(name = "worker")
-    private String worker = "Не назначен";
+    private String worker;
+
+    @Column(name = "rating")
+    private String rating;
+
+    @Column(name = "dispatcher_comment")
+    private String dispatcher_comment;
 }
