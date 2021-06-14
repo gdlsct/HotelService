@@ -1,4 +1,4 @@
-package com.example.hotelservice.models;
+package com.example.hotelservice.authentication.roles;
 
 import lombok.Data;
 

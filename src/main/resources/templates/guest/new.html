@@ -6,7 +6,7 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 <div class="container marginTop">
-    <form th:action="@{/guest/requests}" th:object="${request}" method="post">
+    <form th:action="@{/requests}" th:object="${request}" method="post">
 
         <p>Описание:
             <input type="text" th:field="*{description}" name="description" id="description"

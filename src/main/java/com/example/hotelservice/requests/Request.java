@@ -1,7 +1,6 @@
-package com.example.hotelservice.models;
+package com.example.hotelservice.requests;
 
 import lombok.Data;
-import lombok.Value;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

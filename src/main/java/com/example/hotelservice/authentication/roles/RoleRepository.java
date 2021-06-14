@@ -1,8 +1,8 @@
-package com.example.hotelservice.repositories;
+package com.example.hotelservice.authentication.roles;
 
 import java.util.List;
 
-import com.example.hotelservice.models.UserRole;
+import com.example.hotelservice.authentication.userRole.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

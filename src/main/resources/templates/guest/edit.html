@@ -9,7 +9,7 @@
 <div class="container marginTop">
   <h2 th:text="'Заявка #' + *{id}"></h2>
 
-  <form action="#" th:action="@{'/guest/requests/' + *{id}}" th:object="${request}" method="POST">
+  <form action="#" th:action="@{'/requests/' + *{id}}" th:object="${request}" method="POST">
 
     <p>Описание проблемы: <input type="text" th:field="*{description}" class="form-control mb-4 col-4"></p>
 
@@ -18,7 +18,7 @@
 
   <hr>
 
-  <a th:href="@{/guest/requests/}"> Вернуться к заявкам</a>
+  <a th:href="@{/requests/}"> Вернуться к заявкам</a>
 </div>
 
 </body>

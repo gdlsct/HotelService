@@ -11,7 +11,7 @@
     <h2>Профиль</h2>
     <h3>Логин : <span th:utext="${#request.userPrincipal.name}"></span></h3>
 
-    <div th:if="${userInfo != null}" th:utext="'Имя: ' + ${firstName}"></div>
+    <div th:if="${userInfo != null}" th:utext="'Имя: ' + ${firstName} + ${userInfo}"></div>
 </div>
 </body>
 

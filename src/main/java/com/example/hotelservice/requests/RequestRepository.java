@@ -1,6 +1,5 @@
-package com.example.hotelservice.repositories;
+package com.example.hotelservice.requests;
 
-import com.example.hotelservice.models.Request;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

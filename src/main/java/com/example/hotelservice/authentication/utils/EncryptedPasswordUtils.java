@@ -1,4 +1,4 @@
-package com.example.hotelservice.utils;
+package com.example.hotelservice.authentication.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

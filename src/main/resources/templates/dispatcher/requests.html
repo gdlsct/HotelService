@@ -37,8 +37,8 @@
                         <td th:text="${request.rating}"></td>
                         <td th:text="${request.worker}"></td>
                         <td th:text="${request.dispatcher_comment}"></td>
-                        <td><a th:href="@{/dispatcher/requests/{id}(id=${request.id})}" class="btn btn-primary"><i
-                                class="fas fa-user-edit ml-2"></i></a></td>
+                        <td><a th:href="@{/requests/{id}(id=${request.id})}" class="btn btn-primary"><i
+                                class="fas fa-appUser-edit ml-2"></i></a></td>
                     </tr>
                     </tbody>
                 </table>

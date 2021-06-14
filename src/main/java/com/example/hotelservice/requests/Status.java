@@ -1,4 +1,4 @@
-package com.example.hotelservice.models;
+package com.example.hotelservice.requests;
 
 public enum Status {
     CREATED("Создано"),

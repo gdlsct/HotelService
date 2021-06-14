@@ -1,5 +1,7 @@
-package com.example.hotelservice.models;
+package com.example.hotelservice.authentication.userRole;
 
+import com.example.hotelservice.authentication.roles.AppRole;
+import com.example.hotelservice.authentication.users.AppUser;
 import lombok.Data;
 
 import javax.persistence.*;

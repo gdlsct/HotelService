@@ -9,16 +9,7 @@
 <<div class="container marginTop">
   <h2 th:text="'Заявка #' + *{id}"></h2>
 
-  <form action="#" th:action="@{/dispatcher/requests/}" th:object="${request}" method="POST">
-
-    <!-- Add hidden form field to handle update -->
-    <input type="hidden" th:field="*{id}" />
-    <input type="hidden" th:field="*{firstName}">
-    <input type="hidden" th:field="*{lastName}">
-    <input type="hidden" th:field="*{room}">
-    <input type="hidden" th:field="*{rating}">
-    <input type="hidden" th:field="*{status}">
-    <input type="hidden" th:field="*{description}">
+  <form action="#" th:action="@{'/requests/' + *{id}}" th:object="${request}" method="POST">
 
     <p>Сотрудник: <input type="text" th:field="*{worker}" class="form-control mb-2 col-2"></p>
     <p>Комментарий: <input type="text" th:field="*{dispatcher_comment}" class="form-control mb-4 col-4"></p>

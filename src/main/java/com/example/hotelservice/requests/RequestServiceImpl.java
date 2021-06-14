@@ -1,10 +1,6 @@
-package com.example.hotelservice.services.impl;
+package com.example.hotelservice.requests;
 
-import com.example.hotelservice.models.Request;
-import com.example.hotelservice.models.Status;
-import com.example.hotelservice.repositories.RequestRepository;
-import com.example.hotelservice.repositories.UserRepository;
-import com.example.hotelservice.services.RequestService;
+import com.example.hotelservice.authentication.users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +56,6 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public void cancelRequestById(long id) {
         this.requestRepository.findById(id).get().setStatus(Status.CANCELLED_BY_GUEST);
+
     }
 }
