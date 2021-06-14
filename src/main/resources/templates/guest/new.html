@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: header-css"></div>
+    <div th:replace="common/fragments/header :: header-css"></div>
 </head>
 <body>
-<div th:replace="fragments/header :: header"></div>
+
+<div th:replace="common/fragments/header :: header"></div>
+
 <div class="container marginTop">
     <form th:action="@{/requests}" th:object="${request}" method="post">
 
@@ -16,5 +18,8 @@
         <p><input type="submit" value="Принять"/> <input type="reset" value="Сбросить"/></p>
     </form>
 </div>
+
+<div th:replace="common/fragments/footer :: footer"></div>
+
 </body>
 </html>

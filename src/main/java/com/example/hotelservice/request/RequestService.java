@@ -1,4 +1,4 @@
-package com.example.hotelservice.requests;
+package com.example.hotelservice.request;
 
 import java.security.Principal;
 import java.util.List;

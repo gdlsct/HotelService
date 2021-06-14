@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <div th:replace="fragments/header :: header-css"></div>
+  <div th:replace="common/fragments/header :: header-css"></div>
 </head>
 <body>
-<div th:replace="fragments/header :: header"></div>
+<div th:replace="common/fragments/header :: header"></div>
 
 <div class="container marginTop">
   <h2 th:text="'Заявка #' + *{id}"></h2>
@@ -20,6 +20,8 @@
 
   <a th:href="@{/requests/}"> Вернуться к заявкам</a>
 </div>
+
+<div th:replace="common/fragments/footer :: footer"></div>
 
 </body>
 </html>

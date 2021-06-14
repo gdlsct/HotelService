@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: header-css"/>
+    <div th:replace="common/fragments/header :: header-css"></div>
+    <style type="text/css">
+        .forCard {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+    </style>
 </head>
 <body>
-<div th:replace="fragments/header :: header"/>
+<div th:replace="common/fragments/header :: header"></div>
 
 <div class="container marginTop">
     <div class="row row-cols-1 row-cols-md-3 g-3">
@@ -80,6 +89,6 @@
     </div>
 </div>
 
-<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="common/fragments/footer :: footer"></div>
 </body>
 </html>

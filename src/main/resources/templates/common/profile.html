@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+    <div th:replace="common/fragments/header :: header-css"></div>
+</head>
+<body>
+
+<div th:replace="common/fragments/header :: header"></div>
+
+<div class="container marginTop">
+    <h2>Профиль</h2>
+
+    <div th:if="${userInfo != null}">
+        <h5>
+            <div class="mb-3 row">
+                <label for="staticLogin" class="col-sm-2 col-form-label">Логин</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticLogin" value= >
+                </div>
+            </div>
+            <span th:utext="'Логин: ' + ${#request.userPrincipal.name}"></span>
+            <span th:utext="'Имя: ' + ${firstName}"></span>
+            <span th:utext="'Фамилия: ' + ${lastName}"></span>
+            <span th:utext="'Роль: ' + ${userInfo}"></span>
+        </h5>
+    </div>
+</div>
+
+<div th:replace="common/fragments/footer :: footer"></div>
+
+</body>
+</html>

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: header-css"/>
+    <div th:replace="common/fragments/header :: header-css"></div>
 </head>
 <body>
-<div th:replace="fragments/header :: header"/>
+<div th:replace="common/fragments/header :: header"/>
 <div th:switch="${requests.size()}" class="container marginTop">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h2 th:case="0">Заявок ещё нет</h2>
             <div th:case="*">
                 <h2 class="my-5">Заявки</h2>
@@ -37,8 +37,8 @@
                         <td th:text="${request.rating}"></td>
                         <td th:text="${request.worker}"></td>
                         <td th:text="${request.dispatcher_comment}"></td>
-                        <td><a th:href="@{/requests/{id}(id=${request.id})}" class="btn btn-primary"><i
-                                class="fas fa-appUser-edit ml-2"></i></a></td>
+                        <td><a th:href="@{/requests/{id}(id=${request.id})}" class="btn btn-light"><i
+                                class="fas fa-edit ml-2"></i></a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -46,5 +46,8 @@
         </div>
     </div>
 </div>
+
+<div th:replace="common/fragments/footer :: footer"></div>
+
 </body>
 </html>

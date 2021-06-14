@@ -1,6 +1,6 @@
-package com.example.hotelservice.requests;
+package com.example.hotelservice.request;
 
-import com.example.hotelservice.authentication.users.UserRepository;
+import com.example.hotelservice.authentication.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class RequestServiceImpl implements RequestService {
     private RequestRepository requestRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
 
     @Override
@@ -26,9 +26,10 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public void newRequest(Request request, Principal principal) {
 
-        request.setFirstName(userRepository.findUserAccount(principal.getName()).getUserFirstName());
-        request.setLastName(userRepository.findUserAccount(principal.getName()).getUserLastName());
-        request.setRoom(userRepository.findUserAccount(principal.getName()).getUserRoom());
+        request.setLogin(userService.findUserByUserName(principal.getName()).getUserName());
+        request.setFirstName(userService.findUserByUserName(principal.getName()).getName());
+        request.setLastName(userService.findUserByUserName(principal.getName()).getLastName());
+        request.setRoom(userService.findUserByUserName(principal.getName()).getRoom());
         request.setStatus(Status.CREATED);
         request.setWorker("Не назначен");
         request.setRating("Нет оценки");

@@ -1,6 +1,6 @@
-package com.example.hotelservice.requests;
+package com.example.hotelservice.request;
 
-import com.example.hotelservice.authentication.users.UserRepository;
+import com.example.hotelservice.authentication.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -16,13 +16,6 @@ public class RequestController {
 
     @Autowired
     private RequestService requestService;
-
-    private final UserRepository userRepository;
-
-    @Autowired
-    public RequestController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @GetMapping("")
     public String showRequestsList(Model model, Principal principal) {
@@ -70,6 +63,7 @@ public class RequestController {
         model.addAttribute("request", request);
 
         User loginedUser = (User) ((Authentication) principal).getPrincipal();
+
 
         if (loginedUser.getAuthorities().toString().contains("ROLE_GUEST")){
             return "guest/edit";

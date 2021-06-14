@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <div th:replace="fragments/header :: header-css"/>
+  <div th:replace="common/fragments/header :: header-css"></div>
 </head>
 <body>
-<div th:replace="fragments/header :: header"/>
+<div th:replace="common/fragments/header :: header"></div>
+
 <div th:switch="${users.size()}" class="container marginTop">
+
+  <a th:href="@{/users/new}" class="btn btn-dark btn-lg" tabindex="-1" role="button" aria-disabled="true">
+    Создать пользователя
+  </a>
+
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <h2 th:case="0">Пользователей ещё нет</h2>
       <div th:case="*">
         <h2 class="my-5">Пользователи</h2>
@@ -24,14 +30,14 @@
           </tr>
           </thead>
           <tbody>
-          <tr th:each="appUser : ${users}">
-            <td th:text="${appUser.userId}"></td>
-            <td th:text="${appUser.userName}"></td>
-            <td th:text="${appUser.userFirstName}"></td>
-            <td th:text="${appUser.userLastName}"></td>
-            <td th:text="${appUser.userRoom}"></td>
-<!--            <td th:text="${appUser.authorities}"></td>-->
-            <td><a th:href="@{/users/{id}(id=${appUser.userId})}" class="btn btn-primary"><i
+          <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.room}"></td>
+<!--            <td th:text="${user.authorities}"></td>-->
+            <td><a th:href="@{/users/{id}(id=${user.id})}" class="btn btn-light"><i
                     class="fas fa-user-edit ml-2"></i></a></td>
           </tr>
           </tbody>
@@ -40,5 +46,8 @@
     </div>
   </div>
 </div>
+
+<div th:replace="common/fragments/footer :: footer"></div>
+
 </body>
 </html>
