@@ -20,7 +20,8 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "jpaSequence", sequenceName = "USER_SEQUENCE", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "jpaSequence")
     @Column(name = "user_id")
     private int id;
 
@@ -43,7 +44,7 @@ public class User {
     private String lastName;
 
     @Column(name = "room")
-    private int room = 0;
+    private int room;
 
     @Column(name = "active")
     private Boolean active;

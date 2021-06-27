@@ -6,16 +6,27 @@
 <body>
 <div th:replace="common/fragments/header :: header"></div>
 
+<<div class="container marginTop">
+  <h2 th:text="'Заявка #' + *{id}"></h2>
 
-<form action="#" th:action="@{'/worker/requests/' + ${request.id}}" th:object="${request}" th:method="PATCH" style="margin-top: 80px">
-  <p>Описание: <input type="text" th:field="*{description}" /></p>
-  <p><input type="submit" value="Принять" /> <input type="reset" value="Сбросить" /></p>
-</form>
+  <form action="#" th:action="@{'/requests/' + *{id} + '/success'}" th:object="${request}" method="POST">
 
-<form action="#" th:action="@{'/worker/requests/' + ${request.id}}" th:method="PATCH" >
-  <input type="submit" value="Завершить"/>
-</form>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Использованные материалы</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{inventory}"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-dark col-2">Завершить заявку</button>
+    <a th:href="@{'/requests/' + *{id} + '/cancel'}" class="btn btn-danger">Отменить заявку</a>
+
+  </form>
+
+  <hr>
+
+  <a th:href="@{/dispatcher/requests/}"> Вернуться к заявкам</a>
+</div>
 
 <div th:replace="common/fragments/footer :: footer"></div>
+
 </body>
 </html>

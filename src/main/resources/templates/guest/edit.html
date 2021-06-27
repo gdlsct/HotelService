@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <div th:replace="common/fragments/header :: header-css"></div>
+    <div th:replace="common/fragments/header :: header-css"></div>
 </head>
 <body>
 <div th:replace="common/fragments/header :: header"></div>
 
 <div class="container marginTop">
-  <h2 th:text="'Заявка #' + *{id}"></h2>
+    <h2 th:text="'Заявка #' + *{id}"></h2>
 
-  <form action="#" th:action="@{'/requests/' + *{id}}" th:object="${request}" method="POST">
+    <form action="#" th:action="@{'/requests/' + *{id}}" th:object="${request}" method="POST">
 
-    <p>Описание проблемы: <input type="text" th:field="*{description}" class="form-control mb-4 col-4"></p>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Опишите возникшую проблему:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                      th:field="*{description}"></textarea>
+        </div>
 
-    <button type="submit" class="btn btn-dark col-2"> Принять</button>
-  </form>
+        <button type="submit" class="btn btn-dark">Принять</button>
 
-  <hr>
+        <a th:href="@{'/requests/' + *{id} + '/cancel'}" class="btn btn-danger">Отменить заявку</a>
 
-  <a th:href="@{/requests/}"> Вернуться к заявкам</a>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/requests/}"> Вернуться к заявкам</a>
 </div>
 
 <div th:replace="common/fragments/footer :: footer"></div>

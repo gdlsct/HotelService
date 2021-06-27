@@ -34,9 +34,12 @@
                         <td th:text="${request.description}"></td>
                         <td th:text="${request.status.getString()}"></td>
                         <td th:text="${request.rating}"></td>
-                        <td><a th:if="${request.status.getString() == 'Создано'}"
+                        <td>
+                            <a th:if="${request.status.getString() == 'Создано'}"
                                th:href="@{/requests/{id}(id=${request.id})}" class="btn btn-light"><i
-                                class="fas fa-edit"></i></a></td>
+                                    class="fas fa-edit"></i>
+                            </a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

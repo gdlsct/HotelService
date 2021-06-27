@@ -11,10 +11,22 @@
 
   <form action="#" th:action="@{'/requests/' + *{id}}" th:object="${request}" method="POST">
 
-    <p>Сотрудник: <input type="text" th:field="*{worker}" class="form-control mb-2 col-2"></p>
-    <p>Комментарий: <input type="text" th:field="*{dispatcher_comment}" class="form-control mb-4 col-4"></p>
+    <label for="exampleFormControlTextarea1" class="form-label">Сотрудник</label>
+    <div th:each="user : ${users}">
+      <p>
+        <input type="radio" id="roleRadio" th:field="${request.worker}" th:value="${user.lastName}"/>
+        <label class="custom-control-label" th:for="${user.lastName}"
+               th:text="${user.lastName}"></label>
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Комментарий</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{dispatcher_comment}"></textarea>
+    </div>
 
     <button type="submit" class="btn btn-dark col-2"> Принять</button>
+    <a th:href="@{'/requests/' + *{id} + '/cancel'}" class="btn btn-danger">Отменить заявку</a>
   </form>
 
   <hr>

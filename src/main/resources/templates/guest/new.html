@@ -10,12 +10,13 @@
 <div class="container marginTop">
     <form th:action="@{/requests}" th:object="${request}" method="post">
 
-        <p>Описание:
-            <input type="text" th:field="*{description}" name="description" id="description"
-                   class="form-control input-lg"
-                   placeholder="Description" required="true" autofocus="true"/>
-        </p>
-        <p><input type="submit" value="Принять"/> <input type="reset" value="Сбросить"/></p>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Опишите возникшую проблему:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" th:field="*{description}"></textarea>
+        </div>
+
+        <input class="btn btn-dark" type="submit" value="Принять"/>
+        <input class="btn btn-light" type="reset" value="Сбросить"/>
     </form>
 </div>
 

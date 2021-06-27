@@ -19,9 +19,9 @@
                     <input type="text" readonly class="form-control-plaintext" id="staticLogin" value= >
                 </div>
             </div>
-            <span th:utext="'Логин: ' + ${#request.userPrincipal.name}"></span>
-            <span th:utext="'Имя: ' + ${firstName}"></span>
-            <span th:utext="'Фамилия: ' + ${lastName}"></span>
+            <span th:utext="'Логин: ' + ${#request.userPrincipal.name} + '<br>'"></span>
+            <span th:utext="'Имя: ' + ${firstName} + '<br>'"></span>
+            <span th:utext="'Фамилия: ' + ${lastName} + '<br>'"></span>
             <span th:utext="'Роль: ' + ${userInfo}"></span>
         </h5>
     </div>

@@ -58,31 +58,4 @@ public class MainController {
         return "common/news";
     }
 
-    @GetMapping(value = {"/users"})
-    public String users(Model model) {
-
-        model.addAttribute("users", userService.findAllUsers());
-
-        return "admin/list";
-    }
-
-    @GetMapping(value={"/registration"})
-    public String showRegistrationForm(Model model){
-
-        User user = new User();
-        model.addAttribute("user", user);
-        model.addAttribute("roles", roleRepository.findAll());
-        System.out.println(roleRepository.findAll());
-
-        return "admin/registration";
-    }
-
-    @PostMapping(value={"/registration"})
-    public String addUser(@ModelAttribute("user") User user){
-
-        userService.saveUser(user);
-
-        return "redirect:/users";
-    }
-
 }

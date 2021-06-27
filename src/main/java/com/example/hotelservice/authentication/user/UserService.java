@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -42,6 +42,25 @@ public class UserService {
 
     public List<User> findAllUsers() {
         return userRepository.findAll();
+    }
+
+    public List<User> findUsersByRole(String role) {
+
+        Role myRole = roleRepository.findByRole(role);
+
+        List<User> userList = userRepository.findAll();
+        List<User> resUserList = new ArrayList<>();
+
+        for (User user : userList) {
+            System.out.println(user.getRoles().contains(myRole));
+            if (user.getRoles().contains(myRole)){
+                resUserList.add(user);
+            }
+        }
+
+        System.out.println(resUserList);
+
+        return resUserList;
     }
 
 }

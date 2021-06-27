@@ -11,7 +11,8 @@ import javax.validation.constraints.NotNull;
 public class Request {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "jpaSequence", sequenceName = "REQUEST_SEQUENCE", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "jpaSequence")
     private long id;
 
     @Column(name = "login")
@@ -46,4 +47,7 @@ public class Request {
 
     @Column(name = "dispatcher_comment")
     private String dispatcher_comment;
+
+    @Column(name = "inventory")
+    private String inventory;
 }
