@@ -4,13 +4,12 @@
     <div th:replace="common/fragments/header :: header-css"></div>
 </head>
 <body>
-
 <div th:replace="common/fragments/header :: header"></div>
 
 <div class="container">
     <div class="row justify-content-center marginTop">
         <div class="col-6">
-            <form class="card-1" action="#" th:action="@{'/tasks'}" th:object="${task}" method="POST">
+            <form class="card-1" action="#" th:action="@{'/tasks/' + *{taskId}}" th:object="${task}" method="POST">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <a th:href="@{/tasks/}" class="btn btn-sm btn-danger mt-3 me-3">
                         <i class="fas fa-times"></i>
@@ -19,42 +18,40 @@
                 <div class="mt-3 ms-5 mb-3 row">
                     <label for="staticId" class="col-sm-4 col-form-label fw-bold">№: </label>
                     <div class="col-md-8">
-                        <input type="text" readonly class="form-control-plaintext" id="staticId"
-                               value="-">
-                    </div>
-                </div>
-                <div class="mt-3 ms-5 mb-3 row">
-                    <label for="staticGuest" class="col-sm-4 col-form-label fw-bold">Гость: </label>
-                    <div class="col-md-8">
-                        <input type="text" readonly class="form-control-plaintext" id="staticGuest"
-                               th:value="${task.guestFirstName + ' ' + task.guestLastName}">
+                        <input type="text" readonly class="form-control-plaintext" id="staticId" th:value="${task.taskId}">
                     </div>
                 </div>
                 <div class="mt-3 ms-5 mb-3 row">
                     <label for="staticRoom" class="col-sm-4 col-form-label fw-bold">Номер: </label>
                     <div class="col-md-8">
-                        <input type="text" readonly class="form-control-plaintext" id="staticRoom"
-                               th:value="${task.guestRoom}">
+                        <input type="text" readonly class="form-control-plaintext" id="staticRoom" th:value="${task.guestRoom}">
                     </div>
                 </div>
                 <div class="mt-3 ms-5 mb-3 row">
                     <label for="staticStatus" class="col-sm-4 col-form-label fw-bold">Статус: </label>
                     <div class="col-md-8">
-                        <input type="text" readonly class="form-control-plaintext" id="staticStatus" value="Новая">
+                        <input type="text" readonly class="form-control-plaintext" id="staticStatus" th:value="${task.status.statusName}">
                     </div>
                 </div>
-                <div class="mt-3 ms-5 row" style="width: 80%;">
-                    <label for="exampleFormControlTextarea1" class="form-label fw-bold">Описание проблемы:</label>
+                <div class="mt-3 ms-5 me-5 row"  style="width: 80%;">
+                    <label for="description" class="form-label fw-bold">Описание проблемы:</label>
                     <textarea class="form-control"
-                              id="exampleFormControlTextarea1"
+                              id="description"
                               style="background-color: white; margin-left: 2%"
-                              rows="10"
-                              th:field="${task.description}"></textarea>
+                              rows="5"
+                              th:text="*{description}"
+                              readonly>
+                    </textarea>
                 </div>
-                <div class="mt-3 ms-5 me-3">
-                    <button type="submit" class="btn btn-dark mb-5" style="background-color: #4bb34b; margin-left: 2%">
-                        <i class="fas fa-check"></i>
-                    </button>
+                <div class="mt-3 pb-5 ms-5 me-5 row"  style="width: 80%;">
+                    <label for="inventory" class="form-label fw-bold">Использованные материалы</label>
+                    <textarea class="form-control"
+                              id="inventory"
+                              style="background-color: white; margin-left: 2%"
+                              rows="2"
+                              th:text="*{inventory}"
+                              readonly>
+                    </textarea>
                 </div>
             </form>
         </div>
@@ -62,6 +59,5 @@
 </div>
 
 <div th:replace="common/fragments/footer :: footer"></div>
-
 </body>
 </html>

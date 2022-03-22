@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="common/fragments/header :: header-css"></div>
+</head>
+<body>
+
+<div th:replace="common/fragments/header :: header"></div>
+
+<div class="container-fluid marginTop">
+    <div class="row justify-content-md-center">
+        <div class="col-md-10">
+            <a th:href="@{/tasks/new}"
+               class="btn btn-lg"
+               style="background-color: #4bb34b; color: white; margin-bottom: 1%"
+               tabindex="-1"
+               role="button"
+               aria-disabled="true">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="row justify-content-md-center">
+        <div class="col-md-10" style="margin-bottom: 100px">
+            <table class="table table-hover table-borderless card-1">
+                <thead class="table-light">
+                <tr class="border-bottom">
+                    <th>№</th>
+                    <th>Описание</th>
+                    <th>Статус</th>
+                    <th>Оценка</th>
+                    <th>Действия</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="border-bottom" th:each="task : ${tasks}">
+                    <td class="col-1" th:text="${task.taskId}"></td>
+                    <td class="col-6"
+                        style=" overflow:hidden; text-overflow:ellipsis; min-width:100px; max-width:100px;"
+                        th:text="${task.description}"></td>
+                    <td class="col-1" th:text="${task.status.statusName}"></td>
+                    <td class="col-1" th:text="${task.rating} == 0 ? '-' : ${task.rating}"></td>
+                    <td class="col-1">
+                        <a th:href="@{/tasks/{id}(id=${task.taskId})}"
+                           class="btn btn-dark btn-floating m-1"
+                           style="background-color: black">
+                            <i class="fas fa-file"></i>
+                        </a>
+                        <a th:if="${task.status.statusName == 'Создано'}"
+                           th:href="@{/tasks/{id}/edit(id=${task.taskId})}"
+                           class="btn btn-dark btn-floating m-1"
+                           style="background-color: black">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <a th:if="${task.status.statusName == 'Выполнено'}"
+                           th:href="@{/tasks/{id}/rate(id=${task.taskId})}"
+                           class="btn btn-dark btn-floating m-1"
+                           style="background-color: black">
+                            <i class="fas fa-star"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/fragments/footer :: footer"></div>
+
+</body>
+</html>

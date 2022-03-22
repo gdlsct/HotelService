@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="common/fragments/header :: header-css"></div>
+</head>
+<body>
+
+<div th:replace="common/fragments/header :: header"></div>
+
+<div class="container-fluid marginTop">
+    <div class="row justify-content-md-center">
+        <div class="col-md-10" style="margin-bottom: 100px">
+            <div class="table-responsive">
+                <table class="table table-hover table-borderless card-1">
+                    <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Номер</th>
+                        <th>Описание проблемы</th>
+                        <th>Статус</th>
+                        <th>Комментарий диспетчера</th>
+                        <th>Материалы</th>
+                        <th>Действие</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="border-bottom" th:each="task : ${tasks}">
+                        <td class="col-1" th:text="${task.taskId}"></td>
+                        <td class="col-1" th:text="${task.guestRoom}"></td>
+                        <td class="col-4"
+                            style="overflow:hidden; text-overflow:ellipsis; min-width:100px; max-width:100px;"
+                            th:text="${task.description}"></td>
+                        <td class="col-1" th:text="${task.status.statusName}"></td>
+                        <td class="col-1"
+                            style="overflow:hidden; text-overflow:ellipsis; min-width:100px; max-width:100px;"
+                            th:text="${task.dispatcherComment}"></td>
+                        <td class="col-1"
+                            style="overflow:hidden; text-overflow:ellipsis; min-width:100px; max-width:100px;"
+                            th:text="${task.inventory}"></td>
+                        <td class="col-1">
+                            <a
+                               th:href="@{/tasks/{id}(id=${task.taskId})}"
+                               class="btn btn-dark btn-floating m-1"
+                               style="background-color: #B3E5FC;">
+                                <i class="fas fa-file"></i>
+                            </a>
+                            <a th:if="${task.status.statusName == 'Назначено' ||
+                                        task.status.statusName == 'Выполнено' ||
+                                        task.status.statusName == 'Отменено сотрудником'}"
+                               th:href="@{/tasks/{id}/edit(id=${task.taskId})}"
+                               class="btn btn-dark btn-floating m-1"
+                               style="background-color: #B3E5FC;">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/fragments/footer :: footer"></div>
+
+</body>
+</html>

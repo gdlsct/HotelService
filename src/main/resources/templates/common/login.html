@@ -9,33 +9,33 @@
 <div th:replace="common/fragments/header :: header"></div>
 
 <div class="container">
-    <div class="row justify-content-md-center marginTop">
-        <div class="col col-lg-4">
-            <form th:action="@{/login}" method="post">
+    <div class="row justify-content-center marginTop">
+        <div class="text-center col-5">
+            <form class="card-1" th:action="@{/login}" method="post" style="margin-top:30px">
                 <fieldset>
-                    <h1 class="h3 mb-3 font-weight-normal">Авторизация</h1>
+                    <h1 class="h3 pt-5 mb-3 font-weight-normal">Вход Eleon Service</h1>
 
                     <div th:if="${param.error}">
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger ms-5 me-5">
                             Неверный логин и пароль
                         </div>
                     </div>
                     <div th:if="${param.logout}">
-                        <div class="alert alert-info">
+                        <div class="alert alert-info ms-5 me-5">
                             Вы вышли из профиля
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group ms-5 me-5 mb-3">
                         <input type="text" name="username" id="username" class="form-control input-lg"
                                placeholder="UserName" required="true" autofocus="true"/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group ms-5 me-5 mb-3">
                         <input type="password" name="password" id="password" class="form-control input-lg"
                                placeholder="Password" required="true"/>
                     </div>
 
-                    <div class="row" style="margin-top:10px">
-                        <div class="col col-lg-3">
+                    <div class="row justify-content-md-center">
+                        <div class="col col-lg-3 mb-5">
                             <input type="submit" class="btn btn-md btn-primary btn-block" value="Войти"/>
                         </div>
                     </div>

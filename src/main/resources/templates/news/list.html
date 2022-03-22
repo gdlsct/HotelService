@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="common/fragments/header :: header-css"></div>
+    <style type="text/css">
+        .forCard {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical;
+
+        }
+    </style>
+    <title>Новости</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div th:replace="common/fragments/header :: header"></div>
+
+<div class="container-fluid marginTop">
+    <div class="row justify-content-md-center">
+        <div class="col-md-1">
+            <a th:href="@{/news/new}"
+               class="btn btn-lg position-sticky"
+               style="background-color: #4bb34b; color: white; margin-bottom: 1%"
+               tabindex="-1"
+               role="button"
+               aria-disabled="true">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <div class="row row-cols-1 g-3">
+                <div class="col" style="height: 45em;" th:each="item : ${news}">
+                    <div class="card card-1 h-100">
+                        <img th:src="${item.imgUrl}" class="card-img-top" style="height: 20em">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${item.name}"></h5>
+                            <p class="card-text forCard" th:text="${item.description}"></p>
+                            <p class="card-text">
+                                <small class="text-muted" th:text="${item.date}"></small>
+                            </p>
+                            <div class="position-absolute bottom-0 start-0 mt-1">
+                                <div class="ms-3 pb-3">
+                                    <a th:href="@{'/news/' + ${item.newsId}}"
+                                       class="btn btn-dark btn-floating m-1"
+                                       style="background-color: black">
+                                        <i class="fas fa-file"></i>
+                                    </a>
+                                    <a th:href="@{'/news/' + ${item.newsId} + '/edit'}"
+                                       class="btn btn-dark btn-floating m-1"
+                                       style="background-color: black">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/fragments/footer :: footer"></div>
+</body>
+</html>

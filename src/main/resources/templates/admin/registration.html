@@ -6,8 +6,8 @@
     <script>
         $(document).ready(function () {
 
-            $('input[type="radio"]').click(function () {
-                if ($(this).attr("value") === "4") {
+            $('select[type="text"]').click(function () {
+                if ($(this).attr("value") === "3c002716-8db0-11ec-b909-0242ac120002") {
                     $(".room").show('slow');
                 } else {
                     $(".room").hide('slow');
@@ -15,77 +15,184 @@
                 }
             });
 
-            $('input[type="radio"]').trigger('click');  // trigger the event
+            $('select[type="text"]').trigger('click');  // trigger the event
         });
+
+        doSomething(){
+
+        }
     </script>
+    <title></title>
 </head>
 <body>
 
 <div th:replace="common/fragments/header :: header"></div>
 
-<div class="container marginTop">
-    <div class="row justify-content-md-center">
-        <div class="col-md-6">
-        <form action="#" th:action="@{/users}" th:object="${user}" method="post">
-            <h2>Добавить нового пользователя</h2>
+<!--<div class="container marginTop">-->
+<!--    <div class="row justify-content-md-center">-->
+<!--        <div class="col-md-6">-->
+<!--            <form action="#" th:action="@{/persons}" th:object="${newPerson}" method="post">-->
+<!--                <h2>Добавить нового пользователя</h2>-->
+<!--                <p>-->
+<!--                    <label>Логин</label>-->
+<!--                    <input type="text" th:field="*{login}" placeholder="Введите логин"-->
+<!--                           class="form-control"-->
+<!--                    />-->
+<!--                    <label th:if="${#fields.hasErrors('login')}"-->
+<!--                           th:errors="*{login}"-->
+<!--                           class="validation-message">-->
+<!--                    </label>-->
+<!--                </p>-->
 
-            <p>
-                <label>Логин</label>
-                <input type="text" th:field="*{userName}" placeholder="Введите логин"
-                       class="form-control"/> <label
-                    th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"
-                    class="validation-message"></label>
-            </p>
+<!--                <p>-->
+<!--                    <label>Пароль</label>-->
+<!--                    <input type="password" th:field="*{password}"-->
+<!--                           placeholder="Введите пароль" class="form-control"-->
+<!--                    />-->
+<!--                    <label th:if="${#fields.hasErrors('password')}"-->
+<!--                           th:errors="*{password}"-->
+<!--                           class="validation-message">-->
+<!--                    </label>-->
+<!--                </p>-->
 
-            <p>
-                <label>Пароль</label>
-                <input type="password" th:field="*{password}"
-                       placeholder="Введите пароль" class="form-control"/> <label
-                    th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-                    class="validation-message"></label>
-            </p>
+<!--                <p>-->
+<!--                    <label>Имя</label>-->
+<!--                    <label th:if="${#fields.hasErrors('firstName')}"-->
+<!--                           th:errors="*{firstName}"-->
+<!--                           class="validation-message">-->
+<!--                    </label>-->
+<!--                    <input type="text"-->
+<!--                           th:field="*{firstName}"-->
+<!--                           placeholder="Введите имя"-->
+<!--                           class="form-control"-->
+<!--                    />-->
+<!--                </p>-->
 
-            <p>
-                <label>Имя</label>
-                <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-                       class="validation-message"></label>
-                <input type="text" th:field="*{name}" placeholder="Введите имя"
-                       class="form-control"/>
-            </p>
+<!--                &lt;!&ndash;            <p>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <label>Имя</label>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <label th:if="${#fields.hasErrors('imageUrl')}"&ndash;&gt;-->
+<!--                &lt;!&ndash;                       th:errors="*{ima}"&ndash;&gt;-->
+<!--                &lt;!&ndash;                       class="validation-message">&ndash;&gt;-->
+<!--                &lt;!&ndash;                </label>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <input type="text"&ndash;&gt;-->
+<!--                &lt;!&ndash;                       th:field="*{imageUrl}"&ndash;&gt;-->
+<!--                &lt;!&ndash;                       placeholder="Введите ссылку на автар"&ndash;&gt;-->
+<!--                &lt;!&ndash;                       class="form-control"&ndash;&gt;-->
+<!--                &lt;!&ndash;                />&ndash;&gt;-->
+<!--                &lt;!&ndash;            </p>&ndash;&gt;-->
 
-            <p>
-                <label>Фамилия</label>
-                <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
-                       class="validation-message"></label>
-                <input type="text" th:field="*{lastName}"
-                       placeholder="Введите фамилию" class="form-control"/>
-            </p>
+<!--                <p>-->
+<!--                    <label>Фамилия</label>-->
+<!--                    <label th:if="${#fields.hasErrors('lastName')}"-->
+<!--                           th:errors="*{lastName}"-->
+<!--                           class="validation-message">-->
+<!--                    </label>-->
+<!--                    <input type="text"-->
+<!--                           th:field="*{lastName}"-->
+<!--                           placeholder="Введите фамилию"-->
+<!--                           class="form-control"-->
+<!--                    />-->
+<!--                </p>-->
 
-            <label>Роль</label>
-            <div th:each="role : ${roles}">
-                <p>
-                    <input type="radio" id="roleRadio" th:field="${user.roles}" th:value="${role.id}"/>
-                    <label class="custom-control-label" th:for="${role.id}"
-                           th:text="${role.roleDescription}"></label>
-                </p>
-            </div>
+<!--                <label>Роль</label>-->
+<!--                <div th:each="role : ${roles}">-->
+<!--                    <p>-->
+<!--                        <input type="radio" id="roleRadio" th:field="${newPerson.role}" th:value="${role.roleId}"/>-->
+<!--                        <label class="custom-control-label"-->
+<!--                               th:for="${role.roleId}"-->
+<!--                               th:text="${role.roleDescription}">-->
+<!--                        </label>-->
+<!--                    </p>-->
+<!--                </div>-->
 
-            <p class="room" style="display:none">
-                <label>Комната</label>
-                <input type="text" th:field="*{room}" placeholder="Введите комнату"
-                       class="form-control"/> <label
-                    th:if="${#fields.hasErrors('room')}" th:errors="*{room}"
-                    class="validation-message"></label>
-            </p>
+<!--                <p class="room" style="display:none">-->
+<!--                    <label>Комната</label>-->
+<!--                    <input type="text" th:field="*{room}" placeholder="Введите комнату"-->
+<!--                           class="form-control"/> <label-->
+<!--                        th:if="${#fields.hasErrors('room')}" th:errors="*{room}"-->
+<!--                        class="validation-message"></label>-->
+<!--                </p>-->
 
-            <p>
-                <button type="submit" class="btn btn-primary btn-block">Создать пользователя</button>
-            </p>
+<!--                <p>-->
+<!--                    <button type="submit" class="btn btn-primary btn-block">Создать пользователя</button>-->
+<!--                </p>-->
 
-        </form>
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container">
+    <div class="row justify-content-center marginTop">
+        <div class="col-6">
+            <form class="card-1" action="#" th:action="@{/persons}" th:object="${newPerson}" method="POST">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a th:href="@{/persons/}" class="btn btn-sm btn-danger mt-3 me-3">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </div>
+                <div class="mt-3 ms-5 mb-3 me-5 row">
+                    <label for="staticId" class="col-sm-4 col-form-label fw-bold">Логин: </label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="staticId"
+                               th:field="${newPerson.login}">
+                    </div>
+                </div>
+                <div class="mt-3 ms-5 mb-3 me-5 row">
+                    <label for="staticGuest" class="col-sm-4 col-form-label fw-bold">Пароль: </label>
+                    <div class="col-md-8">
+                        <input type="password" class="form-control" id="staticGuest"
+                               th:field="${newPerson.password}">
+                    </div>
+                </div>
+                <div class="mt-3 ms-5 mb-3 me-5 row">
+                    <label for="staticRoom" class="col-sm-4 col-form-label fw-bold">Имя: </label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="staticRoom"
+                               th:field="${newPerson.firstName}">
+                    </div>
+                </div>
+                <div class="mt-3 ms-5 mb-3 me-5 row">
+                    <label for="staticStatus" class="col-sm-4 col-form-label fw-bold">Фамилия: </label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="staticStatus"
+                               th:field="${newPerson.lastName}">
+                    </div>
+                </div>
+                <div class="mt-3 ms-5 me-5 row" style="width: 81.5%">
+                    <label for="role" class="form-label fw-bold">Роль:</label>
+                    <select id="role"
+                            th:field="${newPerson.role}"
+                            class="form-select"
+                            aria-label="Role select"
+                            style="margin-left: 2%;">
+                        <option th:each="role : ${roles}"
+                                th:value="${role.roleName}"
+                                th:text="${role.roleDescription}"
+                                th:selected="Роль">
+                        </option>
+                    </select>
+                </div>
+                <div class="mt-3 ms-5 me-5 row room">
+                    <label>Комната</label>
+                    <input type="text" th:field="*{room}" placeholder="Введите комнату"
+                           class="form-control"/>
+                    <label
+                        th:if="${#fields.hasErrors('room')}" th:errors="*{room}"
+                        class="validation-message">
+                    </label>
+                </div>
+                <div class="mt-3 ms-5 mb-3 me-3">
+                    <button type="submit" class="btn btn-dark mb-5" style="background-color: #4bb34b; margin-left: 2%">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-</div>
+
+<div th:replace="common/fragments/footer :: footer"></div>
 
 </body>
 </html>

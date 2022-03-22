@@ -8,22 +8,39 @@
 
 <div th:replace="common/fragments/header :: header"></div>
 
-<div class="container marginTop">
-    <h2>Профиль</h2>
-
-    <div th:if="${userInfo != null}">
-        <h5>
-            <div class="mb-3 row">
-                <label for="staticLogin" class="col-sm-2 col-form-label">Логин</label>
-                <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="staticLogin" value= >
+<div class="container">
+    <div class="row justify-content-center marginTop">
+        <div class="col-6">
+            <form class="card-1">
+                <div class="ms-5 mb-3 me-5 pt-5 row justify-content-center">
+                    <img th:src="${person.imageUrl}" class="card-img-top rounded-circle" style="height: 30em; width: 30em; object-fit: cover;">
                 </div>
-            </div>
-            <span th:utext="'Логин: ' + ${#request.userPrincipal.name} + '<br>'"></span>
-            <span th:utext="'Имя: ' + ${firstName} + '<br>'"></span>
-            <span th:utext="'Фамилия: ' + ${lastName} + '<br>'"></span>
-            <span th:utext="'Роль: ' + ${userInfo}"></span>
-        </h5>
+                <div class="mt-3 ms-5 mb-3 me-5 row">
+                    <label for="staticDate" class="col-sm-4 col-form-label fw-bold">Логин: </label>
+                    <div class="col-md-8">
+                        <input type="text" readonly class="form-control-plaintext" id="staticDate" th:value="${person.login}">
+                    </div>
+                </div>
+                <div class="mt-3 ms-5 mb-3 me-5 row">
+                    <label for="staticName" class="col-sm-4 col-form-label fw-bold">Имя: </label>
+                    <div class="col-md-8">
+                        <input type="text" readonly class="form-control-plaintext" id="staticName" th:value="${person.firstName + ' ' + person.lastName}">
+                    </div>
+                </div>
+                <div class="mt-3 ms-5 mb-3 me-5 row">
+                    <label for="staticRoom" class="col-sm-4 col-form-label fw-bold">Имя: </label>
+                    <div class="col-md-8">
+                        <input type="text" readonly class="form-control-plaintext" id="staticRoom" th:value="${person}">
+                    </div>
+                </div>
+                <div class="mt-3 ms-5 mb-3 me-5 pb-5 row">
+                    <label for="staticDescription" class="col-sm-4 col-form-label fw-bold">Роль: </label>
+                    <div class="col-md-8">
+                        <input type="text" readonly class="form-control-plaintext" id="staticDescription" th:value="${person.role.roleDescription}">
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

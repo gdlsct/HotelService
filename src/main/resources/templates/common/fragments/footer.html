@@ -1,12 +1,54 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-</head>
+    <title>Footer</title></head>
 <body>
-<div th:fragment="footer">
-    <div class="container" style="text-align: center">
-        <p>&copy; 2021 Eleon Hotel</p>
-    </div>
+<div th:fragment="footer" style="padding-top: 6%">
+    <footer class="text-center fixed-bottom">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-2">
+                <!-- Vkontakte -->
+                <a class="btn btn-primary btn-floating m-1"
+                   style="background-color: #4c75a3;"
+                   href="https://vk.com/godlesscat"
+                   role="button">
+                    <i class="fab fa-vk"></i>
+                </a>
+
+                <!-- Google -->
+                <a class="btn btn-primary btn-floating m-1"
+                   style="background-color: #dd4b39;"
+                   href="https://www.google.com/"
+                   role="button">
+                    <i class="fab fa-google"></i>
+                </a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-primary btn-floating m-1"
+                   style="background-color: #0082ca;"
+                   href="#!"
+                   role="button">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <!-- Github -->
+                <a class="btn btn-primary btn-floating m-1"
+                   style="background-color: #333333;"
+                   href="https://github.com/GodlessCat/HotelService"
+                   role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-1" th:text="'© 2022 Hotel Eleon'"></div>
+        <!-- Copyright -->
+    </footer>
 </div>
 </body>
 </html>
