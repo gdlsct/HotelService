@@ -2,6 +2,7 @@
 //
 //import com.example.hotelservice.domain.Task;
 //import com.example.hotelservice.repository.TaskRepository;
+//import java.security.Principal;
 //import java.util.Arrays;
 //import org.junit.jupiter.api.DisplayName;
 //import org.junit.jupiter.api.Test;
@@ -9,16 +10,19 @@
 //import org.springframework.boot.test.context.SpringBootTest;
 //import org.springframework.boot.test.mock.mockito.MockBean;
 //
+//import static org.mockito.Mockito.times;
+//import static org.mockito.Mockito.verify;
 //import static org.mockito.Mockito.when;
+//import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
 //
 //@SpringBootTest
-//public class TaskService {
+//public class TaskServiceTest {
 //
 //    @MockBean
 //    private TaskRepository taskRepository;
 //
-//    @MockBean
-//    private AddressRepository addressRepository;
+////    @MockBean
+////    private AddressRepository addressRepository;
 //
 //    @Autowired
 //    private TaskService taskService;
@@ -27,12 +31,19 @@
 //    @DisplayName("Test find all tasks")
 //    void testFindAll() {
 //
-//        Task task1 = new Task()
-//        Task task2 = new Task("Jack", "88005553536");
+//        Task task1 = new Task();
+//        Task task2 = new Task();
 //
 //        when(taskRepository.findAll()).thenReturn(Arrays.asList(task1, task2));
 //
-//        List<UserResponse> users = task
+//        Principal principal = new Principal() {
+//            @Override
+//            public String getName() {
+//                return null;
+//            }
+//        }
+//
+//        List<UserResponse> tasks = taskService.getAllTasks();
 //
 //        assertEquals(2, users.size());
 //        assertEquals("John", users.get(0).getName());

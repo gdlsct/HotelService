@@ -38,10 +38,10 @@ public class TaskController {
         model.addAttribute("person", person);
 
         if (person.getRole().getRoleName().equals("ROLE_ADMIN") || person.getRole().getRoleName().equals("ROLE_DISPATCHER")) {
-            return "dispatcher/tasks";
+            return "dispatcher/list";
         }
         if (person.getRole().getRoleName().equals("ROLE_WORKER")) {
-            return "worker/tasks";
+            return "worker/list";
         }
         if (person.getRole().getRoleName().equals("ROLE_GUEST")) {
             return "guest/list";
@@ -111,21 +111,21 @@ public class TaskController {
     public String updateTask(@PathVariable("id") final Long id, @ModelAttribute("task") final TaskDTO dto) {
         taskService.updateTask(id, dto);
 
-        return "redirect:/list";
+        return "redirect:/tasks";
     }
 
     @GetMapping("/{id}/cancel")
     public String cancelTask(@PathVariable("id") final Long id, final Principal principal) {
         taskService.cancelTask(id, principal);
 
-        return "redirect:/list";
+        return "redirect:/tasks";
     }
 
     @PostMapping("/{id}/success")
     public String successTask(@PathVariable("id") final Long id, @ModelAttribute("task") final TaskDTO dto) {
         taskService.successTask(id, dto);
 
-        return "redirect:/list";
+        return "redirect:/tasks";
     }
 
     @GetMapping("/{id}/rate")

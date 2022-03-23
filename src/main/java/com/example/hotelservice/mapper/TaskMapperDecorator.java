@@ -52,6 +52,7 @@ public abstract class TaskMapperDecorator implements TaskMapper {
 
 
         if (task.getWorker() != null) {
+            dto.setWorkerLogin(task.getWorker().getLogin());
             dto.setWorkerFirstName(task.getWorker().getFirstName());
             dto.setWorkerLastName(task.getWorker().getLastName());
         }

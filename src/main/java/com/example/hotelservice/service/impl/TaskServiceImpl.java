@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
+
     private final TaskRepository taskRepository;
     private final GuestRepository guestRepository;
     private final WorkerRepository workerRepository;

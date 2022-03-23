@@ -29,10 +29,10 @@ public class PersonServiceImpl implements PersonService {
 
     private final PersonBaseRepository<Person> personBaseRepository;
     private final GuestRepository guestRepository;
-    private final RoleRepository roleRepository;
     private final DispatcherRepository dispatcherRepository;
     private final WorkerRepository workerRepository;
     private final AdminRepository adminRepository;
+    private final RoleRepository roleRepository;
     private final PersonMapper personMapper;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
