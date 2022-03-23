@@ -46,12 +46,25 @@ public class TaskServiceImpl implements TaskService {
         throw new RuntimeException("Нет известных ролей");
     }
 
+    public List<Task> getTasks() {
+        return taskRepository.findAll();
+    }
+
     public void createTask(final TaskDTO taskDTO, final Principal principal) {
         Task task = new Task();
         task.setGuest(guestRepository.findByLogin(principal.getName()));
         task.setDescription(taskDTO.getDescription());
         task.setStatus(statusRepository.findByStatusName("Создано"));
         taskRepository.save(task);
+    }
+
+    public Task newTask(final TaskDTO dto){
+        Task task = new Task();
+        task.setGuest(guestRepository.findByLogin("guest1"));
+        task.setDescription(dto.getDescription());
+        task.setStatus(statusRepository.findByStatusName("Создано"));
+
+        return taskRepository.save(task);
     }
 
     public void updateTask(final Long id, final TaskDTO dto) {
@@ -71,6 +84,14 @@ public class TaskServiceImpl implements TaskService {
         }
 
         taskRepository.save(task);
+    }
+
+    public Task updateTaskById(final Long id, final TaskDTO dto) {
+        Task task = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found for id: " + id));
+
+        task.setDescription(dto.getDescription());
+
+        return task;
     }
 
     public void cancelTask(final Long id, final Principal principal) {
@@ -124,5 +145,9 @@ public class TaskServiceImpl implements TaskService {
         }
 
         throw new RuntimeException("Нет известных ролей");
+    }
+
+    public Task getTaskById(final Long id) {
+        return taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found for id: " + id));
     }
 }

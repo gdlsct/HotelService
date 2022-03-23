@@ -26,10 +26,10 @@ public class TaskController {
 
     private final TaskService taskService;
     private final PersonService personService;
+    private final PersonBaseRepository<Person> personBaseRepository;
     private final GuestRepository guestRepository;
     private final PersonMapper personMapper;
     private final RoleRepository roleRepository;
-    private final PersonBaseRepository<Person> personBaseRepository;
 
     @GetMapping
     public String getTasksList(final Model model, final Principal principal) {
