@@ -60,22 +60,18 @@ public class PersonServiceImpl implements PersonService {
         return null;
     }
 
-    public void savePerson(final NewPersonDTO dto) {
+    public Person savePerson(final NewPersonDTO dto) {
         dto.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
         Role role = roleRepository.findByRoleName(dto.getRole());
         switch (dto.getRole()) {
             case "ROLE_GUEST":
-                guestRepository.save(Person.createGuest(dto, role));
-                break;
+                return guestRepository.save(Person.createGuest(dto, role));
             case "ROLE_DISPATCHER":
-                dispatcherRepository.save(Person.createDispatcher(dto, role));
-                break;
+                return dispatcherRepository.save(Person.createDispatcher(dto, role));
             case "ROLE_WORKER":
-                workerRepository.save(Person.createWorker(dto,role));
-                break;
+                return workerRepository.save(Person.createWorker(dto,role));
             case "ROLE_ADMIN":
-                adminRepository.save(Person.createAdmin(dto, role));
-                break;
+                return adminRepository.save(Person.createAdmin(dto, role));
             default:
                 throw new RuntimeException("Роль не найдена");
         }

@@ -69,7 +69,6 @@ public class TaskServiceTest {
         verify(taskRepository, times(1)).findAll();
     }
 
-
     @Test
     @DisplayName("Test find task by id")
     void testFindById() {
